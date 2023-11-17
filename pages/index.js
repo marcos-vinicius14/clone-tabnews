@@ -1,5 +1,9 @@
-function Home() {
-  return <h1>Você consegue. Siga em frente, mesmo que seja sozinho!</h1>;
+import database from 'infra/database'
+
+async function status(request, response) {
+  const result = await database.query("SELECT 1 + 1 as sum");
+  console.log(result.rows);
+  response.status(200).json({ chave: "São acima da média"});
 }
 
-export default Home;
+export default status;
